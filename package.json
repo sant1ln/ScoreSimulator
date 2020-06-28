@@ -1,0 +1,24 @@
+{
+  "name": "socresimulator",
+  "version": "1.0.0",
+  "description": "Simulator of your University finial notes",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sant1ln/ScoreSimulator.git"
+  },
+  "keywords": [
+    "HTML",
+    "JS",
+    "NODE"
+  ],
+  "author": "Santiago Lopera Naranjo <santiagoln09@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sant1ln/ScoreSimulator/issues"
+  },
+  "homepage": "https://github.com/sant1ln/ScoreSimulator#readme"
+}
