@@ -2,10 +2,10 @@ const tabla = document.querySelector('table')
 const contenedor = document.querySelector('#bodyelements');
 const contBoton = document.querySelector('#buttonCont');
 
-document.querySelector('#cantidad').addEventListener('change',(e)=>{
+document.querySelector('#cantidad').addEventListener('input',(e)=>{
     console.log(e.target.value);
     
-
+    contenedor.innerHTML = '';
     
      for(let i=0;i<e.target.value;i++){
          console.log(i)
@@ -22,9 +22,10 @@ document.querySelector('#cantidad').addEventListener('change',(e)=>{
          cont.appendChild(td2);
          contenedor.appendChild(cont)
     }
-    let button = document.createElement('button');
+
+ /*    let button = document.createElement('button');
     let contenido = document.createTextNode("Calcular")
     button.appendChild(contenido)
-    contBoton.appendChild(button)
+    contBoton.appendChild(button) */
    
 })
