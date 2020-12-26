@@ -78,8 +78,8 @@ button:hover{
 td{
     text-align: center;
     margin: 5px;
-    background-color: rgba(255,255,255,.3);
-    width: 10%;
+    /* background-color: rgba(255,255,255,.3); */
+    width: 9%;
 }
 .note{
     width: 20%;

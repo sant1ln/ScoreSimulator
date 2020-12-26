@@ -6,20 +6,19 @@ const cantidad = document.querySelector("#cantidad");
 cantidad.addEventListener("input", CreateNoteFields);
 
 function CreateNoteFields(e) {
-  /* console.log(e.target.value); */
-
+  
   contenedor.innerHTML = "";
-  contBoton.innerHTML = ""; 
+  contBoton.innerHTML = "";
 
   for (let i = 0; i < e.target.value; i++) {
-    /* console.log(i); */
+    
     var cont = document.createElement("tr");
     var td1 = document.createElement("td");
     var td2 = document.createElement("td");
     var inpt = document.createElement("input");
     var inpt2 = document.createElement("input");
-    inpt.setAttribute('id',`note${i}`)
-    inpt2.setAttribute('id',`value${i}`)
+    inpt.setAttribute("id", `note${i}`);
+    inpt2.setAttribute("id", `value${i}`);
     inpt.classList.add("note");
     inpt2.classList.add("note");
     td1.appendChild(inpt);
@@ -27,69 +26,59 @@ function CreateNoteFields(e) {
     cont.appendChild(td1);
     cont.appendChild(td2);
     contenedor.appendChild(cont);
+    
   }
   let button = document.createElement("button");
   let contenido = document.createTextNode("Calcular");
   button.setAttribute("type", "submit");
   button.appendChild(contenido);
   contBoton.appendChild(button);
-  button.addEventListener('click',GetData);
-  return 
+  button.addEventListener("click", GetData);
+  return;
 }
 
-function GetData(e){
-    e.preventDefault();
-    cantidadTotal = parseFloat(cantidad.value);
-    /* console.log(cantidadTotal) */
-   const NotaMaxima = parseFloat(document.querySelector('#max').value)
-    var notas = {
-        nota: null,
-        valor: null, 
-    }
+function GetData(e) {
+  e.preventDefault();
+  cantidadTotal = parseFloat(cantidad.value);
+  const NotaMaxima = parseFloat(document.querySelector("#max").value);
 
-    function Notes(nota,value){
-      this.nota = nota;
-      this.value = value;
-    }
+  let Tnotes = [];
+  let Tvalues = [];
+  for (let i = 0; i < cantidadTotal; i++) {
+    var note = parseFloat(document.querySelector(`#note${i}`).value);
+    var value = parseFloat(document.querySelector(`#value${i}`).value);
+    Tnotes.push(note);
+    Tvalues.push(value);
+  }
+   GetEndNote(Tnotes, Tvalues, NotaMaxima, cantidadTotal);
+}
 
-    
-    let Tnotes = []
-    let Tvalues = []
-    for(let i = 0; i<cantidadTotal; i++){
-       var note = parseFloat(document.querySelector(`#note${i}`).value)
-       var value = parseFloat(document.querySelector(`#value${i}`).value)
-       Tnotes.push(note);
-       Tvalues.push(value);
-    
-   }
-   console.table(Tnotes)
-   console.table(Tvalues)
+function GetEndNote(Tnotes, Tvalues, NotaMaxima, cantidadTotal) {
+  let porcentajeMax = 0;
+  for (let i = 0; i < Tvalues.length; i++) {
+    porcentajeMax += Tvalues[i];
+  }
+  
+  
+  let porcentaje = [];
+  for (let i = 0; i < cantidadTotal; i++) {
+    porcentaje.push((Tnotes[i] * Tvalues[i]) / NotaMaxima);
+  }
 
-   
- let porcentajeMax = 0;
- for(let i=0;i<Tvalues.length;i++){
-   porcentajeMax += Tvalues[i]
- }
- console.log(porcentajeMax)
-   
- let porcentaje = [];
- for(let i=0;i<cantidadTotal;i++){
-    porcentaje.push((Tnotes[i] * Tvalues[i])/NotaMaxima);
- }
+  
 
- console.table(porcentaje)
-
- let sumaPorcentajes = 0;
- for(let i=0;i<porcentaje.length;i++){
+  let sumaPorcentajes = 0;
+  for (let i = 0; i < porcentaje.length; i++) {
     sumaPorcentajes += porcentaje[i];
- }
+  }
 
-  console.log(sumaPorcentajes);
-
-  const NotaFinal = (sumaPorcentajes * NotaMaxima)/porcentajeMax;
-    console.log(`Tu nota final es: ${NotaFinal}`)
-
+  const NotaFinal = (sumaPorcentajes * NotaMaxima) / porcentajeMax;
+  
+  PrintNotes(NotaFinal)
 }
 
+const PrintNotes = NotaFinal =>{
+  
+  Swal.fire(`Tu nota final sería ${NotaFinal}`)
 
-
+}
